@@ -1,0 +1,23 @@
+<script type="text/template" id="template_index_content_list">
+<div class="index-page-content-list">
+    <% _.each(content, function(item, index){ %>
+        <% if(/^#$/.test(item.url)){return;} %>
+        <a href="<%= item.url %>">
+            <span class="index-page-content-list-title"><%- item.title %></span>
+            <span class="index-page-content-list-desc">
+                <% _.each(item.desc, function(descItem, descIndex){ %>
+                <span class="index-page-content-list-desc-item"><%= descIndex + 1 %>. <%- descItem %></span>
+                <% }); %>
+            </span>
+        </a>
+    <% }); %>
+</div>
+</script>
+
+<script type="text/template" id="template_index_content_tuiguang">
+
+<a href="<%= tuiguang.url %>"
+    class="index-page-content-tuiguang"><img src="<%= tuiguang.iconurl %>"></a>
+
+</script>
+

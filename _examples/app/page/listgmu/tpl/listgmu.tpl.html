@@ -1,0 +1,22 @@
+<script type="text/template" id="template_listgmu_news">
+    <% _.each(news, function(item, index){ %>
+        <% if(item.title){ %>
+            <div
+                data-id="<%= item.nid %>"
+                data-title="<%- item.title %>"
+                data-site="<%= item.site %>"
+                data-src="<%= item.url %>"
+                data-time="<%= item.ts %>"
+                ><%- item.title %></div>
+        <% } %>
+    <% }); %>
+</script>
+
+<script type="text/template" id="template_listgmu_header">
+<div class="listgmu-page-header-scroller">
+<% _.each(classes, function(item, index){ %>
+    <a href="#listgmu/<%= item.id %>"><%- item.title %></a>
+<% }); %>
+</div>
+</script>
+

@@ -1,0 +1,58 @@
+/*页面视图id，与action同名，以_page为后缀*/
+#howtoindex_page{
+    /*默认不展示*/
+    display:none;
+
+    /*绝对定位*/
+    position:absolute;
+
+    /*撑满整个父容器*/
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+    /*最低高度，确保即使没内容，loading也可以展示，同时能遮住下方内容*/
+    min-height:600px;
+}
+
+#howtoindex_page_header{}
+
+.howtoindex-page-header-tuiguang{
+    display:block;
+    text-decoration:none;
+}
+
+.howtoindex-page-header-tuiguang img{
+    max-width:100%;
+}
+
+#howtoindex_page_content{
+    /*作为绝对定位的loading样式的容器，需要使用relative定位*/
+    position:relative;
+    height:100%;
+}
+
+#howtoindex_page_content h3{
+    margin:5px;
+    padding:5px;
+    border-style:solid;
+    border-color:#67AA49;
+    border-width:0 0 1px 5px;
+    font:bold 20px/28px normal;
+}
+
+.howtoindex-page-content-list{
+    display:block;
+    height:26px;
+    margin:2px;
+    padding:5px;
+    color:#000;
+    text-decoration:none;
+    font:normal 16px/26px normal;
+    border-color:#eee;
+    border-style:outset;
+    border-width:0 0 1px;
+    border-radius:4px;
+}
+

@@ -1,0 +1,72 @@
+#detailmulticolumn_page{
+    /*默认不展示*/
+    display:none;
+
+    /*绝对定位*/
+    position:absolute;
+
+    /*撑满整个父容器*/
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+    /*最低高度，确保即使没内容，loading也可以展示*/
+    min-height:300px;
+}
+
+#detailmulticolumn_page_content{
+}
+
+#detailmulticolumn_page_footer{
+    background:#999;
+}
+
+.detailmulticolumn-page-content-pageslider{
+    /**
+     * @note: 作为loading的容器，需要设置position属性，确保loading样式正常
+     */
+    position:relative;
+    height:400px;
+    overflow:hidden;
+    -webkit-column-width:300px;
+    -webkit-column-gap: 10px;
+}
+
+.detailmulticolumn-page-content-pageslider-author
+,.detailmulticolumn-page-content-pageslider-date
+{
+    margin:auto 3px;
+    color:#bbb;
+    font:normal 12px/20px normal;
+}
+
+.detailmulticolumn-page-content-pageslider-source{
+    display:block;
+    margin-top:20px;
+    text-align:center;
+    color:#FFF;
+    text-decoration:none;
+    background:#999;
+}
+
+.detailmulticolumn-page-content-pageslider h3{
+    padding:10px 5px 5px;
+    margin-bottom:5px;
+    border-style:solid;
+    border-color:#A6C5E8;
+    border-width:0 0 2px 4px; 
+    font:bold 18px/30px normal;
+}
+
+.detailmulticolumn-page-content-pageslider img
+{
+    max-width:100%;
+}
+
+.detailmulticolumn-page-content-pageslider p
+{
+    margin:5px 5px 0;
+    text-indent:28px;
+    font:normal 14px/28px normal;
+}

@@ -1,0 +1,57 @@
+#navzaker_page{
+    /*默认不展示*/
+    display:none;
+
+    /*绝对定位*/
+    position:absolute;
+
+    /*撑满整个父容器*/
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+    /*最低高度，确保即使没内容，loading也可以展示*/
+    min-height:300px;
+}
+
+#navzaker_page_notes{
+    /**
+     * @note: 作为loading的容器，需要设置position属性，确保loading样式正常
+     */
+    position:relative;
+    height:400px;
+    overflow:hidden;
+    -webkit-column-width:1280px;
+    -webkit-column-gap:0;
+    background:#fff url("../img/navzaker-bg-sky.png") repeat 0 0;
+}
+
+.navzaker-page-notes-group{
+    height:100%;
+    padding-left:20px;
+}
+
+.navzaker-page-notes-row{
+    height:80px;
+    padding-top:10px;
+}
+
+.navzaker-page-notes-item{
+    float:left;
+    /**
+     * @note: 使用inline-block，多出一些边距
+     * display:inline-block;
+     */
+    width:80px;
+    height:80px;
+    margin-left:10px;
+    /*
+    background:#3595CF;
+    */
+    background:rgba(53, 149, 207, 0.75);
+    color:#fff;
+    text-align:center;
+    font:bold 16px/80px Arial;
+}
+

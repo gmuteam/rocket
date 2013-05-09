@@ -1,0 +1,14 @@
+<script type="text/template" id="template_detailwithgc_news">
+<div class="detailwithgc-page-content-news-scroller">
+<h3><%= title %></h3>
+<% _.each(content, function(item, index){ %>
+    <% if(item.type == 'text'){ %>
+        <p><%= item.data %></p>
+    <% } %>
+    <% if(item.type == 'image'){ %>
+        <img src="<%= item.data.small.url %>">
+    <% } %>
+<% }); %>
+</div>
+</script>
+

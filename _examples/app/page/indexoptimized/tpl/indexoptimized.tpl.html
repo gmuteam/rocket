@@ -1,0 +1,23 @@
+<script type="text/template" id="template_indexoptimized_content">
+<div class="indexoptimized-page-content-list">
+    <% _.each(content, function(item, index){ %>
+        <% if(/indexoptimized/.test(item.url)){return;} %>
+        <div class="indexoptimized-page-content-list-item">
+            <div class="indexoptimized-page-content-list-item-title" 
+                data-icon="arrow-r"
+                data-iconpos="right"
+                data-url="<%= item.url %>">
+                <%- item.title %>
+            </div>
+            <div class="indexoptimized-page-content-list-item-descwrapper">
+                <span class="indexoptimized-page-content-list-item-desc">
+                    <% _.each(item.desc, function(descItem, descIndex){ %>
+                    <span class="indexoptimized-page-content-list-item-desc-item"><%= descIndex + 1 %>. <%- descItem %></span>
+                    <% }); %>
+                </span>
+            </div>
+        </div>
+    <% }); %>
+</div>
+</script>
+

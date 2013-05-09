@@ -1,0 +1,12 @@
+<script type="text/template" id="template_detailgmu_news">
+<h3><%= title %></h3>
+<% _.each(content, function(item, index){ %>
+    <% if(item.type == 'text'){ %>
+        <p><%= item.data %></p>
+    <% } %>
+    <% if(item.type == 'image'){ %>
+        <img src="<%= item.data.small.url %>">
+    <% } %>
+<% }); %>
+</script>
+

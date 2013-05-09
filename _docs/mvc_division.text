@@ -1,0 +1,163 @@
+% MVC分解 
+% hudamin@baidu.com
+% 2013-03-21
+% 进阶, webapp框架
+
+## 前言
+
+普通webapp在代码规模上一般都超1w，甚至更多。如何更好地用代码完相应的功能逻辑，直接影响webapp的开发效率和质量。
+在APP层面，使用传统web应用的路由分发机制，在页面层面，引入一种MVC的分解模型，形成的控制器树，使多个规模适中的MVC模块协作完成一个复杂的功能逻辑。本章介绍webapp框架是如何进行MVC分解的。
+
+## 1. 与传统MVC的关系
+
+webapp框架使用Backbone提供的MVC实现机制，与传统MVC的关系可以归纳如下：
+    
+    传统            框架
+    App Controller  rocket.router
+    Model           rocket.model, rocket.collection
+    UI Controller   rocket.baseview, rocket.pageview, rocket.subview
+    View            前端魔板系统(underscore.template)
+
+特殊地方在于带view后缀的类，实际上是承担**UI控制器**的角色，其派发来自UI的事件，真正的view由前端模板系统来承担。
+
+@todo: model与view的对应关系
+@todo: model共享，页面内，跨页面
+
+## 2. view与model的对应关系
+
+现实使用中，对于view和model的引用关系有多种方式：
+
+* view与model一对一直接引用, model.view or view.model
+* 引入中间控制器，负责视图的创建和组织，形成一种层次结构，这正是v1.0采用的方式
+* 纯事件方式，通过事件派发和响应取代直接的方法调用
+
+@todo: v1.0和v2.0的区别
+
+这些方式都能work，但是对于创建关系（谁创建谁），交互关系（事件还是直接调用方法）等没有作出明确规定，最终的结果是各有各的实现方式，甚至一个webapp中不同页面的实现也存在差异，这对于代码开发和后期升级维护是极为不利的。
+
+框架v2.0基于框架v1.0进行了升级，保留了v1.0中视图创建和组织的层次结构（分而治之）以及单向创建，去掉了中间控制器（多余，很多情况下同view功能无异）以及4级命名空间（规避命名空间依赖）。
+
+v2.0对model和view的关系做了如下约定，归纳为：
+
+* view创建同级别的model，不允许进行跨级别model的创建
+* view可以不创建model，仅当有需求才进行创建
+* model和view通过事件进行交互，也可以通过直接引用进行交互，视具体情况而定，以简单优先。但不允许跨级别直接引用，在不可避免的情况下，也只能使用事件进行交互，比如通用model。
+
+## 3. MVC视图控制器树（view tree）
+
+为了达到分而治之，view的创建按照一定的规则进行，最终形成一个树形结构，树形结构的每个节点都是一个view，其负责子视图控制器的创建（仅此而已），以及其所在级别应该关注的逻辑，比如同级别model创建，事件响应，DOM操作等。
+
+通过合理的MVC分解，形成规模适中的view tree，每个节点负责相应的控制逻辑，多层次的节点通过树形结构进行协作，最终完成复杂的页面逻辑。相比集中控制的模型，view tree有更好的扩展性和易维护性。
+
+
+### 3.1 view tree及其创建
+
+简单view tree，如下所示：
+
+    router.vs
+        pageview.detail
+            subview.detail_toolbar
+            subview.detail_content
+                subview.detail_content_news
+
+* router.vs创建pageview.detail
+* pageview.detail创建subview.detail_toolbar, subview.detail_content
+* subview.detail_content创建subview.detail_content_news
+
+view负责按需创建同级别的model，如下：
+
+    router.vs
+        pageview.detail
+            subview.detail_toolbar
+            subview.detail_content
+                subview.detail_content_news => model.detail_news
+
+每个页面都有一棵view tree，根结点是pageview类型，其它节点都是subview类型。
+@todo: 类继承说明
+
+### 3.2 view tree 代码示例
+
+pageview.detail在其init方法中创建subview.detail_toolbar以及subview.detail_content，并进行setup（预先存在）。具体如下：
+
+    rocket.pageview.detail = rocket.pageview.extend({
+        
+        ...
+
+        ,init: function(options){
+            var me = this;
+            
+            // 创建toolbar视图
+            me.setup(new rocket.subview.detail_toolbar(options, me));
+
+            // 创建content视图
+            me.setup(new rocket.subview.detail_content(options, me));
+        }
+
+        ,...
+
+    });
+
+subview.detail_content在其init方法中创建subview.detail_content_news，并进行append（动态生成），具体如下：
+
+    rocket.subview.detail_content = rocket.subview.extend({
+
+        ...
+
+        ,init: function(options){
+            var me = this, 
+                subView;
+
+            subView = new rocket.subview.detail_content_news(
+                $.extend({}, options), 
+                me
+            );
+            me.append(subView);
+        }
+
+        ,...
+    });
+
+
+subview.detail_content_news在其init方法中创建model.detail_news，具体如下：
+
+    rocket.subview.detail_content_news = rocket.subview.extend({
+
+        ...
+
+        ,init: function(options){
+            var me = this;
+
+            me.model = new rocket.model.detail_news(
+                $.extend({}, options)
+                ,{}
+            );
+        }
+
+        ,...
+    });
+
+
+### 3.3 视图与DOM节点的关系
+
+视图总对应某个DOM节点，该节点可以是已经存在与DOM Tree的某个DOM节点，也可以通过动态创建的节点。视图创建时，所对应的DOM节点初始状态都为隐藏，须由视图控制器在适当的时候展现。
+
+视图的层次关系与其DOM节点的层次关系是匹配的。
+ 
+## 4. MVC分解思路
+
+MVC分解，可以综合考虑以下维度：
+
+* 根据DOM结构能区分出哪些功能模块，比如顶部工具栏、导航条、筛选工具条，中部图片轮播、列表、底部推广位等
+* 有哪些独立的数据请求，比如筛选条件json、轮播图json、列表数据json、推广位json
+* 功能模块控制逻辑的复杂度
+
+如果功能模块控制逻辑很简单，比如纯静态展现，没有交互和数据请求，则不需要用MVC来控制；
+如果控制逻辑复杂，则有必要抽象成MVC
+如果控制逻辑十分复杂，还可以对该功能模块再进行分解，比如子MVC节点，孙子MVC节点等
+
+控制逻辑何为复杂，何为简单呢？可以简单的用代码规模来衡量。如果拆分成的MVC节点，其单个文件规模在300行以内为合理，如果超出300行，则可以考虑再进行分解。
+
+@todo: view必然与某个DOM节点对应，view的树形关系与DOM的树形也是对应的
+
+
+

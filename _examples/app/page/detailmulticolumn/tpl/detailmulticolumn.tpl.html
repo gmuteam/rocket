@@ -1,0 +1,15 @@
+<script type="text/template" id="template_detailmulticolumn_list">
+    <h3><%= title %></h3>
+    <span class="detailmulticolumn-page-content-pageslider-author"><%= author %></span>
+    <span class="detailmulticolumn-page-content-pageslider-date"><%= date %></span>
+<% _.each(content, function(item, index){ %>
+    <% if(item.type == 'text'){ %>
+        <p><%= item.data %></p>
+    <% } %>
+    <% if(item.type == 'image'){ %>
+        <img src="<%= item.data.small.url %>">
+    <% } %>
+<% }); %>
+    <a class="detailmulticolumn-page-content-pageslider-source" href="<%= src %>" target="_blank">查看源网页</a>
+</script>
+

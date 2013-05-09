@@ -1,0 +1,34 @@
+#wrapper{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+/*global*/
+@import url("./globalloading.css")
+@import url("./pageloading.css")
+@import url("./vs-toolbar.css")
+@import url("./ui-refresh.css")
+
+/*page*/
+@import url("../page/index/css/index.css")
+@import url("../page/indexoptimized/css/indexoptimized.css")
+
+@import url("../page/list/css/list.css")
+@import url("../page/listwithgc/css/listwithgc.css")
+@import url("../page/listgmu/css/listgmu.css")
+@import url("../page/listzaker/css/listzaker.css")
+
+@import url("../page/detailmulticolumn/css/detailmulticolumn.css")
+@import url("../page/detail/css/detail.css")
+@import url("../page/detailwithgc/css/detailwithgc.css")
+@import url("../page/detailgmu/css/detailgmu.css")
+
+@import url("../page/navzaker/css/navzaker.css")
+
+@import url("../page/howtoindex/css/howtoindex.css")
+@import url("../page/howto/css/howto.css")
+
+@import url("../page/videoindex/css/videoindex.css")

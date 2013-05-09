@@ -1,0 +1,69 @@
+#index_page{
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+/*动画切换，特别是slide等，对渲染性能有较高要求，使用强信号，触发使用硬件加速*/
+#index_page *{
+    -webkit-transform:translateZ(0);
+}
+
+#index_page_header{
+    margin-bottom:5px;
+    padding:5px 0 3px 8px;
+    text-shadow:rgba(64, 64, 64, 0.3) 3px -3px 2px;
+    font:bold 22px/40px Arial;
+    border:2px solid #B3EC96;
+    border-width:0 0 3px 5px;
+}
+
+#index_page_content{
+    position:relative;
+}
+
+.index-page-content-tuiguang{
+    display:block;
+    text-decoration:none;
+}
+
+.index-page-content-tuiguang img{
+    max-width:100%;
+}
+
+.index-page-content-list{
+}
+
+.index-page-content-list a{
+    display:block; 
+    margin:3px 3px 0;
+    padding-left:5px;
+    background:#eee;
+    border:1px outset #ddd;
+    border-radius:4px;
+    text-decoration:none;
+}
+
+.index-page-content-list-title{
+    font:normal 18px/40px Arial;
+    color:#000;
+}
+
+.index-page-content-list-desc{
+    display:block; 
+    margin:0 10px 10px 20px;
+    padding:2px 5px;
+    border:1px inset #ccc;
+    border-radius:4px;
+    background:#ddd;
+}
+
+.index-page-content-list-desc-item{
+    display:block; 
+    font:normal 12px/20px Arial;
+    color:#666;
+}
+

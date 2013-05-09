@@ -1,0 +1,56 @@
+#listgmu_page{
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+#listgmu_page_header{
+    height:40px;
+    border:1px solid #bbb;
+    background:#eee;
+    /*border-radius:5px;*/
+}
+
+.listgmu-page-header-scroller{
+    height:40px;
+    overflow:hidden;
+    padding:3px 0;
+}
+
+.listgmu-page-header-scroller a{
+    float:left;
+    display:block;
+    padding:5px;
+    font:normal 16px/24px normal;
+    color:#222;
+    text-decoration:none;
+}
+
+.listgmu-page-header-scroller a.listgmu-page-header-scroller-current{
+    font-weight:bold;
+    border:1px solid #888;
+    border-radius:3px;
+}
+
+#listgmu_page_title{}
+
+#listgmu_page_content{
+    position:relative;
+    min-height:300px;
+}
+
+.listgmu-page-content-newslist-container{
+    padding:5px;
+}
+
+.listgmu-page-content-newslist-container div{
+    height:40px;
+    overflow:hidden;
+    padding:0 5px;
+    border-bottom:1px solid #eee;
+    font:normal 14px/40px normal;
+}
+

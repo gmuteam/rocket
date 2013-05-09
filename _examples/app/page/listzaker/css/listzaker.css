@@ -1,0 +1,241 @@
+#listzaker_page{
+    /*默认不展示*/
+    display:none;
+
+    /*绝对定位*/
+    position:absolute;
+
+    /*撑满整个父容器*/
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+    /*最低高度，确保即使没内容，loading也可以展示*/
+    min-height:300px;
+}
+
+#listzaker_page_header{
+    height:38px;
+    border-bottom:2px solid #2181CB;
+}
+
+.listzaker-page-header-tag{
+    height:100%;
+    width:128px;
+    padding-left:8px;
+    background:#2181CB;
+    color:#FFF;
+    font:bold 22px/38px 'Arial';
+}
+
+#listzaker_page_content{
+    position:relative;
+    width:100%;
+    height:100%;
+}
+
+.listzaker-page-content-pageslider{
+    /**
+     * @note: 作为loading的容器，需要设置position属性，确保loading样式正常
+     */
+    position:relative;
+    height:100%;
+    overflow:hidden;
+    -webkit-column-width:1280px;
+    /*建议值：0，避免误差*/
+    -webkit-column-gap:0;
+}
+
+.listzaker-page-content-pageslider-itemgroup{
+    /*规整分页的关键*/
+    /*@todo: 一个技巧*/
+    height:100%;
+    overflow:hidden;
+}
+
+.listzaker-page-content-pageslider-itemrow{
+    height:110px;
+    border-bottom:1px solid #eee; 
+}
+
+.listzaker-page-content-pageslider-itemwrapper{
+    float:left;
+    height:100%;
+    width:50%;
+    overflow:hidden;
+}
+
+.landscape .listzaker-page-content-pageslider-itemwrapper{
+    width:33%;
+}
+
+.listzaker-page-content-pageslider-item{
+    padding:5px;
+    border-width:0 0 0 2px;
+    /*background:#eee;*/
+    font:normal 14px/28px normal;
+}
+
+.listzaker-page-content-pageslider-item-title{
+    font:bold 14px/20px normal;
+    height:40px;
+    overflow:hidden;
+    /*控制不了多行的溢出*/
+    text-overflow:ellipsis;
+}
+
+.listzaker-page-content-pageslider-item-author
+,.listzaker-page-content-pageslider-item-date
+{
+    display:inline-block;
+    margin:auto 3px;
+    color:#bbb;
+    font:normal 12px/20px normal;
+}
+
+.listzaker-page-content-pageslider img
+{
+    width:100%;
+    max-width:100%;
+}
+
+/**
+ * 布局a，无图
+ */
+
+.listzaker-page-layout-a
+{
+}
+
+.listzaker-page-layout-a .listzaker-page-content-pageslider-item
+{
+    padding-top:30px;
+}
+
+/**
+ * 布局b，有图
+ */
+
+.listzaker-page-layout-b
+{
+}
+
+.listzaker-page-layout-b .listzaker-page-content-pageslider-item-image
+{
+    height:100px;
+    overflow:hidden;
+}
+
+.listzaker-page-layout-b .listzaker-page-content-pageslider-item-title
+{
+    /**
+     * @note: opacity, relative/absolute position在multi-column情况下不支持，可用rgba代替
+     * opacity:0.2;
+     * position:absolute | relative;
+     */
+    height:32px;
+    margin-top:-32px;
+    color:#fff;
+    font:bold 12px/16px normal;
+    text-shadow:#000 1px -1px 1px;
+}
+
+.listzaker-page-layout-b .listzaker-page-content-pageslider-item-author
+,.listzaker-page-layout-b .listzaker-page-content-pageslider-item-date
+{
+    display:none;
+}
+
+#listzaker_page_footer{
+    position:relative;
+    height:30px;
+    overflow:hidden;
+}
+
+.listzaker-page-footer-backbtn{
+    left:0;
+    background:transparent url(../img/zaker-btn.png) no-repeat 2px -22px;
+}
+
+.listzaker-page-footer-refreshbtn{
+    right:0;
+    background:transparent url(../img/zaker-btn.png) no-repeat 0 4px;
+}
+
+.listzaker-page-footer-backbtn
+, .listzaker-page-footer-refreshbtn{
+    position:absolute;
+    height:100%;
+    width:26px;
+    top:0;
+    font:bold 16px/26px normal;
+    background-size:26px 48px;
+}
+
+.listzaker-page-footer-timeline{
+    position:relative;
+    height:100%;
+    margin:0 26px;
+}
+
+.listzaker-page-footer-timeline-ruler {
+    position:relative;
+    width:132px;
+    height:30px;
+    margin:0 auto;
+    background:transparent url(../img/zaker-timeline.png) no-repeat 0 6px;
+    background-size:132px 16px;
+}
+
+.listzaker-page-footer-timeline-ruler-begin
+, .listzaker-page-footer-timeline-ruler-end {
+    position:absolute;
+    top:0;
+    width:50px;
+    height:100%;
+    font:normal 12px/30px normal;
+    color:#888;
+}
+
+.listzaker-page-footer-timeline-ruler-begin{
+    left:-65px;
+    text-align:right;
+}
+
+.listzaker-page-footer-timeline-ruler-end {
+    right:-65px;
+    background:transparent url(../img/loading.gif) no-repeat center center;
+    background-size:16px 16px;
+}
+
+.listzaker-page-footer-timeline-ruler-end-text {
+    background:#fff;    
+    text-align:left;
+}
+
+.listzaker-page-footer-timeline-ruler-cursor {
+    position:absolute;
+    top:9px;
+    left:-10px;
+    height:20px;
+    width:21px;
+}
+
+.listzaker-page-footer-timeline-ruler-cursor-head {
+    height:12px;
+    width:21px;
+    border-radius:2px;
+    background:#CC4623;
+    text-align:center;
+    font:normal 10px/12px normal;
+    color:#fff;
+}
+
+.listzaker-page-footer-timeline-ruler-cursor-tail {
+    height:8px;
+    width:1px;
+    margin:0 10px;
+    background:#CC4623;
+}
+

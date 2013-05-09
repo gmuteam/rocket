@@ -1,0 +1,80 @@
+% WEBAPP框架介绍
+% hudamin@baidu.com
+% 2013-04-11
+% 简介, webapp框架
+
+本文给大家介绍一个新东东：WEBAPP框架。简而言之，她是开发Mobile HTML5 SPA的通用开发框架，目的是帮助广大web开发人员快速创建**高性能、易维护、支持多人开发**的webapp程序。
+
+WEBAPP框架最早应用在VS的webapp产品中，目前线上版本是1.0，通过不断的产品检验和开发同学的实践，功能更加完善的**2.0版本**呼之欲出，发布在即。特总结几大亮点罗列如下：
+
+## 一、代码脚手架，助力高效开发 
+
+对webapp开发的通用工作进行了抽取，提供webapp开发的代码脚手架。为开发者提前做了很大一部分的工作，开发者可以把绝大部分精力投在单个页面功能的设计和实现上，而不用关心如何管理页面和页面间协作，也不用关心代码怎么组织，可以直接着手编写具体页面代码。多个页面的开发完全独立，完美支持**多人并行开发**。
+
+![关注页面逻辑，实现并行开发](./img/develop_concurrently.png)
+
+## 二、方法论：分而治之，化繁为简
+
+对webapp页面功能设计和实现提供了一套切实可行的方法论，帮助开发者实现复杂页面功能逻辑时能做到化繁为简，轻松应对。框架提炼出的**MVC分解模型**，使开发者能够将复杂页面功能进行模块分解，通过构建**视图树**，将控制逻辑分摊到多个节点，达到分而治之的效果。同时，页面事件中心和局部事件中心对页面模块之间的交互进行了良好的解耦，页面模块更具独立性，更加容易开发和维护。
+
+![MVC分解，事件中心](./img/mvc_division_and_eventcenter.png)
+
+## 三、丰富的可配置项、扩展接口
+
+提供友好的**配置项和扩展接口**。提供方便的路由、切换效果、位置保留等可配置项，以及自定义动画效果等扩展接口。
+
+    // 路由配置
+    routes: {
+        '': 'index'
+        ,'list/:type': 'list'
+        ,'detail/:type/:src/:title/:author/:time/:nid'
+            : 'detail'
+        ,'listzaker/:type': 'listzaker'
+        ,'navzaker': 'navzaker'
+        ...
+    }
+
+    // 页面切换顺序配置
+    ,pageOrder: [
+        'index'
+        , 'navzaker'
+        , 'list'
+        , 'detail'
+        , ...
+    ]
+
+    // 位置记忆，默认为false，不进行位置记忆
+    ,enablePositionRestore: true
+
+    // 默认页面切换动画
+    ,defaultPageTransition: 'slide'
+
+    // 页面切换动画配置
+    ,pageTransition: {
+        ,'index-navzaker': 'fade'
+        ,'index-listzaker': 'slide'
+        ,'navzaker-listzaker': 'dropdown'
+    }
+
+
+## 四、规范化开发
+
+规范和开发流程。制定了一套开发规范，包括**目录规范**、**文件规范**、**编码规范**等，同时总结和梳理了webapp开发流程。
+
+![规范](./img/standards.png)
+
+## 五、丰富的例子：最佳实践
+
+提供丰富的demo code，提供开发者学习参考。这些demo都以实际产品为原型，例举了各类方案的实现，比如**垃圾回收、模型共享、GMU组件**使用等等。开发者甚至可以从demo中找到和你的功能实现接近的代码。
+
+![最佳实践](./img/best-practice.png)
+
+## 六、结合优秀代码库和开发平台
+
+与业内优秀代码库与前端开发平台整合。基础库使用**Zepto**，UI库使用**GMU**，MVC应用类库使用**Backbone**，前端模板库使用**underscore**，前端开发平台使用**FIS webapp业务模型**。
+
+![框架结构图](./img/framework-overview.png)
+
+## 其他
+
+即将推出，敬请关注。

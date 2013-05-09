@@ -1,0 +1,33 @@
+<script type="text/template" id="template_navzaker_notes">
+    <% var i = 0; %>
+    <% _.each(notes, function(item, index){ %>
+
+
+        <% if(i%itemsPerRow == 0 && i != 0){ %>
+        </div>
+        <% } %>
+
+        <% if(i%itemsPerPage == 0 && i != 0){ %>
+        </div>
+        <% } %>
+
+        <% if(i%itemsPerPage == 0){ %>
+        <div class="navzaker-page-notes-group"> 
+        <% } %>
+        
+        <% if(i%itemsPerRow == 0){ %>
+        <div class="navzaker-page-notes-row"> 
+        <% } %>
+
+            <div class="navzaker-page-notes-item"
+                    data-type="<%= item.id %>">
+                    <%= item.title %>
+            </div>
+
+        <% i++; %>
+
+    <% }); %>
+
+        </div>
+        </div>
+</script>

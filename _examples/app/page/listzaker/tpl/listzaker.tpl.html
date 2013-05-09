@@ -1,0 +1,56 @@
+<script type="text/template" id="template_listzaker_news">
+    <% var i = 0; %>
+    <% _.each(news, function(item, index){ %>
+
+
+        <% if(item.title){ %>
+
+            <% if(i%itemsPerRow == 0 && i != 0){ %>
+            </div>
+            <% } %>
+
+            <% if(i%itemsPerPage == 0 && i != 0){ %>
+            </div>
+            <% } %>
+
+            <% if(i%itemsPerPage == 0){ %>
+            <div class="listzaker-page-content-pageslider-itemgroup"> 
+            <% } %>
+            
+            <% if(i%itemsPerRow == 0){ %>
+            <div class="listzaker-page-content-pageslider-itemrow"> 
+            <% } %>
+
+            <div class="listzaker-page-content-pageslider-itemwrapper listzaker-page-layout-<%= app.helper.getZakerListClass(item) %>">
+                <div class="listzaker-page-content-pageslider-item"
+                        data-id="<%= item.nid %>"
+                        data-title="<%- item.title %>"
+                        data-site="<%= item.site %>"
+                        data-src="<%= item.url %>"
+                        data-time="<%= item.ts %>">
+
+                    <% if(item.imageurls.length > 0){ %>
+                    <div class="listzaker-page-content-pageslider-item-image">
+                        <img src="<%= item.imageurls[0].url %>">
+                    </div>
+                    <% } %>
+
+                    <div class="listzaker-page-content-pageslider-item-title">
+                        <%- item.title %></div>
+                    <div class="listzaker-page-content-pageslider-item-author">
+                        <%- item.site %></div>
+                    <div class="listzaker-page-content-pageslider-item-date">
+                        <%- app.helper.getFormatedDate(item.ts) %></div>
+
+                </div>
+            </div>
+
+        <% } %>
+
+        <% i++; %>
+
+    <% }); %>
+
+        </div>
+        </div>
+</script>

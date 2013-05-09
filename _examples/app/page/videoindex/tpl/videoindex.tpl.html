@@ -1,0 +1,29 @@
+<script type="text/template" id="template_videoindex_content_list">
+
+<div class="videoindex-page-content-list-title videoindex-page-content-list-title-<%= type %>">
+<%= typename %>
+</div>
+<div class="videoindex-page-content-list-content">
+<% _.each(list, function(item, index){ %>
+    <a class="videoindex-page-content-list-content-item">
+        <img src="<%= item.img_url %>">
+    </a>
+<% }); %>
+</div>
+
+</script>
+
+<script type="text/template" id="template_videoindex_content_tuiguang">
+
+<a href="<%= tuiguang.url %>"
+    class="videoindex-page-content-tuiguang"><img src="<%= tuiguang.iconurl %>"></a>
+
+</script>
+
+<script type="text/template" id="template_videoindex_content_imageslider">
+
+<a href="<%= tuiguang.url %>"
+    class="videoindex-page-content-tuiguang"><img src="<%= tuiguang.iconurl %>"></a>
+
+</script>
+

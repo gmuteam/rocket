@@ -1,0 +1,69 @@
+#list_page{
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+#list_page_header{
+    /**
+     * 该元素作为横向iscroll的container，设置以后，会导致整个页面能左右拉动 
+     * width:100%;
+     */
+    height:40px;
+    border:1px solid #bbb;
+    background:#eee;
+    /*border-radius:5px;*/
+}
+
+.list-page-header-scroller{
+    height:40px;
+    overflow:hidden;
+    padding:3px 0;
+}
+
+.list-page-header-scroller a{
+    float:left;
+    display:block;
+    padding:5px;
+    font:normal 16px/24px normal;
+    color:#222;
+    text-decoration:none;
+}
+
+.list-page-header-scroller a.list-page-header-scroller-current{
+    font-weight:bold;
+    border:1px solid #888;
+    border-radius:3px;
+}
+
+#list_page_content{
+    position:relative;
+    /*magic height*/
+    height:600px;
+}
+
+.list-page-newslist{
+    position:relative;
+    height:100%;
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
+.list-page-newslist *{
+    -webkit-transform:translateZ(0);
+}
+
+.list-page-newslist-content{
+}
+
+.list-page-newslist-content-title{
+    height:40px;
+    overflow:hidden;
+    padding:0 5px;
+    border-bottom:1px solid #eee;
+    font:normal 14px/40px normal;
+}
+

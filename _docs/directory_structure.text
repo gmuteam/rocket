@@ -1,0 +1,95 @@
+% 目录组织规范
+% hudamin@baidu.com
+% 2013-03-19
+% 规范, webapp框架
+
+## 说在前面
+
+webapp framework 2.0包含规范、通用框架代码、实现范例等。正所谓“不以规矩，不能成方圆”，使用框架提升webapp开发速度，离不开规范的遵守。本篇说说在代码目录组织上有哪些规范。
+
+framwork包含两个模块，common模块和app模块，两个模块的代码结构说明如下：
+
+## common模块目录结构
+
+common目录包含底层库、MVC类库、UI组件库、webapp应用框架等通用代码，资源形式包含js、css和img等。原则上不允许修改common部分的代码。其目录组织如下：
+
+    ▾ common/
+      ▸ backbone-0.9.10/
+      ▸ config/
+      ▸ css-reset/
+      ▸ gmu-GMU_2.0.3_TAG1/
+      ▸ gmu_1.0.4/
+      ▸ iscroll-4.2.5/
+      ▸ underscore-1.4.4/
+      ▸ webapp-1.0/
+      ▸ webapp-2.0/
+      ▸ zepto-1.0rc1/
+  
+比较一目了然，目录命名方式会标明版本号，方便进行版本切换和维护。特别介绍一下webapp-2.0目录，其中存放webapp framework 2.0的通用框架代码，当然webapp-1.0就是上一版本的framework了。
+
+
+## app模块目录结构
+
+app模块包含具体app的实现代码，包含app配置、具体页面代码（css、html、tpl、js、img），开发者的主要工作在app模块当中。app模块目录结构如下所示：
+
+    ▾ app/
+      ▸ config/             
+      ▸ css/                
+      ▸ data/               
+      ▸ img/                
+      ▸ js/                 
+      ▸ page/               
+      ▸ tpl/                
+        rocket.html            
+
+app子目录具体说明如下：
+
+    config:     fis配置目录                 
+    css:        存放产品级别通用css文件和rocket.css整合文件
+    data:       存放fis数据模拟相关文件
+    img:        存放产品级别通用img文件
+    js:         存放app路由配置、初始化代码、其他配置或帮助代码(可自行添加)
+    page:       存放webapp页面代码，每个页面对应一个独立目录，具体查看“page目录结构”
+    tpl:        存放产品级别通用tpl文件
+    rocket.html:   webapp对应的HTML
+
+  
+### page目录结构
+
+@todo: 命名空间层次，解除命名空间依赖
+@todo: 跨页面Model的实现方式
+
+page目录包含组成webapp的各个页面的代码和资源，这些页面的代码和资源在物理目录上是完全独立的，不会也不应该互相影响。以下为page目录层次结构：
+
+    ▾ page/
+      ▾ detail/
+        ▾ css/
+            detail.css
+        ▾ html/
+            detail.html
+        ▾ js/
+          ▾ model/
+              rocket.model.detail_news.js
+          ▾ view/
+              rocket.pageview.detail.js
+              rocket.subview.detail_content.js
+              rocket.subview.detail_content_news.js
+              rocket.subview.detail_header.js
+              rocket.subview.detail_toolbar.js
+        ▾ tpl/
+            detail.tpl.html
+      ▸ detailgmu/
+        ...
+      ▸ detailmulticolumn/
+        ...
+
+说明：
+    detail：页面根目录，以页面对应的action名命名
+    css：   页面css文件，包含且仅包含当前webapp页面所需样式
+    html:   页面HTML结构，包含页面的div标签
+    js:     页面MVC代码，包含model和view两个子目录，对应MVC的M和C
+    tpl:    页面所需前端模板文件，多个script标签组成，以.tpl.html为后缀，对应MVC的V
+
+
+
+

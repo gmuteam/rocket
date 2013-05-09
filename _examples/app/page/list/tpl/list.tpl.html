@@ -1,0 +1,27 @@
+<script type="text/template" id="template_list_news">
+<div class="list-page-newslist-content">
+    <% _.each(news, function(item, index){ %>
+        <% if(item.title){ %>
+            <div class="list-page-newslist-content-title" 
+                data-id="<%= item.nid %>"
+                data-title="<%- item.title %>"
+                data-site="<%= item.site %>"
+                data-src="<%= item.url %>"
+                data-time="<%= item.ts %>"
+                ><%- item.title %></div>
+        <% } %>
+    <% }); %>
+</div>
+</script>
+
+<script type="text/template" id="template_list_header">
+<div class="list-page-header-scroller">
+<% _.each(classes, function(item, index){ %>
+    <a href="#list/<%= item.id %>" 
+        <% if(curType == item.id){ %>class="list-page-header-scroller-current"<% } %>
+        data-type="<%= item.id %>"
+        ><%- item.title %></a>
+<% }); %>
+</div>
+</script>
+

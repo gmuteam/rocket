@@ -1,0 +1,98 @@
+#videoindex_page{
+    /*默认不展示*/
+    display:none;
+
+    /*绝对定位*/
+    position:absolute;
+
+    /*撑满整个父容器*/
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+    /*最低高度，确保即使没内容，loading也可以展示*/
+    min-height:300px;
+}
+
+#videoindex_page_header{
+    margin-bottom:5px;
+    padding:5px 0 3px 8px;
+    text-shadow:rgba(64, 64, 64, 0.3) 3px -3px 2px;
+    font:bold 22px/40px Arial;
+    border:2px solid #B3EC96;
+    border-width:0 0 3px 5px;
+}
+
+#videoindex_page_content{
+    /*pageloading's container*/
+    position:relative;
+}
+
+#videoindex_page_content_imageslider{
+    height:214px;
+}
+
+.ui-slider-item img{
+    min-height:180px; 
+    max-height:214px; 
+}
+
+.videoindex-page-content-tuiguang{
+    display:block;
+    text-decoration:none;
+}
+
+.videoindex-page-content-tuiguang img{
+    max-width:100%;
+}
+
+
+.videoindex-page-content-list{
+}
+
+div.videoindex-page-content-list-title{
+    display:inline-block;
+    margin:15px 10px 10px;
+    padding-left:24px;
+    height:22px;
+    clear:both;
+    font:normal 18px/24px Arial;
+    color:#000;
+    background-size:22px 92px;
+}
+
+.videoindex-page-content-list-title-movie{
+    background: transparent url(../img/menu_icon.png) no-repeat 0 2px;
+}
+
+.videoindex-page-content-list-title-tvplay{
+    background: transparent url(../img/menu_icon.png) no-repeat 0 -22px;
+}
+
+.videoindex-page-content-list-title-tvshow{
+    background: transparent url(../img/menu_icon.png) no-repeat 0 -46px;
+}
+
+.videoindex-page-content-list-title-comic{
+    background: transparent url(../img/menu_icon.png) no-repeat 0 -70px;
+}
+
+.videoindex-page-content-list-content{
+    background:#ddd;
+}
+
+.videoindex-page-content-list-content-item{
+    display:block; 
+    float:left;
+    width:33%;
+    text-align:center;
+    font:normal 12px/20px Arial;
+    color:#666;
+}
+
+.videoindex-page-content-list-content-item img{
+    width:90px;
+    height:126px;
+}
+
