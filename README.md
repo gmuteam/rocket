@@ -5,7 +5,7 @@ ROCKET
 
 ## 快速入口
 
- * todo
+ * [ROCKET编码规范](https://github.com/gmuteam/rocket/issues/1)
 
 ## webapp框架是什么
 
